@@ -1,0 +1,44 @@
+Restaurant
+belongs_to :owner
+has_many :reservations
+has_many :customers, through: :reservations
+
+name
+capacity
+owner_id
+
+
+Reservation
+belongs_to :restaurant
+belongs_to :customer
+
+date
+time
+customer_id
+restaurant_id
+party_size
+
+
+
+Customer
+has_many :reservations
+has_many :restaurants, through: :reservations
+
+email
+password_digest
+
+
+
+Owner
+has_many :restaurants
+
+email
+password_digest
+
+
+
+
+Category
+
+
+Session(controller)

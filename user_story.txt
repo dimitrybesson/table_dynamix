@@ -1,0 +1,70 @@
+User story
+
+WE NEED...
+As a customer...
+  Make a reservation
+  View restaurants
+
+As an owner...
+  Create restaurant
+  View reservations
+  Set capacity(seats)
+  Accept reservations only during working hours
+
+
+WOULD BE NICE..
+As a customer...
+  View current reservations
+  Edit reservations
+  Delete reservations
+  See reviews
+  Leave a rating
+  View a menu, operating hours, contact info, pricing
+  Confirmation email and reminder
+  User account option, stores customer details for faster reservations
+  Sort restaurants, cuisine, price, location, rating, dress code
+  View current reservations
+  Search by anything
+
+As an owner...
+  Edit, restaurant
+  Set max party size
+  Table dynamics
+  Manage reservations
+  View reviews, and maybe respond to them
+  See other restaurants
+  Send confirmations of reservations to customers
+  Send reminder the day of reservation
+  Keep a log of previous customer info
+  Ability to edit current availability of seats in real time (low hassle)
+
+
+EXTRAS....
+As a customer...
+  Share restaurant info with friends
+  reward points incentive system
+  View reservation log
+  See pictures from the restaurant
+
+As an owner...
+  Analytics who goes there
+  Mass email to customers
+  Add pictures
+
+
+HARD THINGS
+Overlapping reservations
+Uncertain meal durations
+Table dynamics can be difficult
+Hard to deal with real time changes
+Staffing changes
+
+
+
+
+SIMPLIFYING ASSUMPTIONS
+Seating on the hour
+Reservation lasts one hour
+No tables, only seats
+Online only, now walk ins / phone reservations
+Capacity is constant
