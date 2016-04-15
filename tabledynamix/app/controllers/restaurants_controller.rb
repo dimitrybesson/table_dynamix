@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :ensure_logged_in, only: %i(new create)
   def index
     @restaurants = Restaurant.all
   end
