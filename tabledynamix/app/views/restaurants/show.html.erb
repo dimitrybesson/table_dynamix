@@ -1,5 +1,7 @@
 <h1><%= @restaurant.name %></h1>
 
-<p><%= @restaurant.capacity %></p>
-
-<p> <%= link_to "Reserve Now", new_restaurant_reservation_path(@restaurant) %></p>
+<% if current_user.class == Owner %>
+  <%= render 'owner' %>
+<% else %>
+  <%= render 'customer' %>
+<% end %>
