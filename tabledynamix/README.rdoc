@@ -1,28 +1,17 @@
-== README
+Ideas:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Models to be potentially generated: Categories, Reviews, Address?, Replies?
 
-Things you may want to cover:
+-if not logged in and trying to reserve, get kicked to login/signup, but then taken back to where you were without having to do any extra navigating
 
-* Ruby version
+-mailer
 
-* System dependencies
+-geolocation
 
-* Configuration
+-owner vs customer view customization
 
-* Database creation
+-form partials?
 
-* Database initialization
+-better menu input/display?
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+-figuring out format of reservation time outputs (also useful for hours of operation)
