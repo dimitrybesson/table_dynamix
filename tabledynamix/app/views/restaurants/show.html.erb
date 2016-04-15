@@ -1,3 +1,5 @@
 <h1><%= @restaurant.name %></h1>
 
-<%= @restaurant.capacity %>
+<p><%= @restaurant.capacity %></p>
+
+<p> <%= link_to "Reserve Now", new_restaurant_reservation_path(@restaurant) %></p>
