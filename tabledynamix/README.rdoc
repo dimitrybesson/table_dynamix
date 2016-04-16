@@ -7,6 +7,8 @@ Today:
 - ****validations for models (new forms, error msgs, flash notifications)
 - ********HTML markup, CSS Styling**************
 
+Walk-in tracking feature for restaurant
+
 Sort, Search, Reviews w/ ratings
 
 Owner edit/delete
