@@ -2,11 +2,11 @@ Today:
 
 - time helper method for display reservations (customer profile-reservation list, owner's restaurant show page-reservations list)
 
-- reservation validation (restaurant capacity vs bookings)
+
 
 - validations for models (new forms, error msgs, flash notifications)
 
-- 
+-
 
 
 
@@ -16,7 +16,8 @@ Today:
 geocode
 
 
-
+Completed:
+- reservation validation (restaurant capacity vs bookings)
 
 Ideas:
 
