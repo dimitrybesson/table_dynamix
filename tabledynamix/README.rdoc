@@ -1,6 +1,19 @@
 Today:
-navigation links - 
 
+- time helper method for display reservations (customer profile-reservation list, owner's restaurant show page-reservations list)
+
+- reservation validation (restaurant capacity vs bookings)
+
+- validations for models (new forms, error msgs, flash notifications)
+
+- 
+
+
+
+
+-mailer
+
+geocode
 
 
 
@@ -10,7 +23,7 @@ Ideas:
 
 Models to be potentially generated: Categories, Reviews, Address?, Replies?
 
--have owner's restaurant #show include customer contact with reservation info
+- reservations look at restaurant capacity
 
 -if not logged in and trying to reserve, get kicked to login/signup, but then taken back to where you were without having to do any extra navigating
 
