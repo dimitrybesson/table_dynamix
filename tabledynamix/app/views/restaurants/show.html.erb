@@ -8,7 +8,7 @@
     <%= @restaurant.phone %>
   </p>
   <p>
-    <%= @restaurant.open_time %> <strong>-</strong> <%= @restaurant.close_time %>
+    <%= @restaurant.open_time.to_formatted_s(:time) %> <strong>-</strong> <%= @restaurant.close_time.to_formatted_s(:time) %>
   </p>
 
   <p>
