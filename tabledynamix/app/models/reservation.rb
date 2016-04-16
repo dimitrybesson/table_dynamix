@@ -6,12 +6,9 @@ class Reservation < ActiveRecord::Base
 
   def can_accomodate_party
   #binding.pry
+    taken_spots = Reservation.all.where(date: date, time: time).sum(:party_size)
 
-    reservations_on_day = Reservation.all.where(date: date)
-    reservations_at_time = reservations_on_day.where(time: time)
-    taken_spots = reservations_at_time.inject(0) {|sum, reservation| sum + reservation.party_size.to_i}
-
-    if (restaurant.capacity.to_i - taken_spots.to_i) < party_size.to_i
+    if (restaurant.capacity - taken_spots) < party_size
       errors.add(:over_capacity, "Sorry, not enough seats")
     end
   end
