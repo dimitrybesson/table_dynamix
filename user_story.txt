@@ -14,7 +14,7 @@ As an owner...
 
 WOULD BE NICE..
 As a customer...
-  View current reservations
+  View current reservations - customer show page
   Edit reservations
   Delete reservations
   See reviews
@@ -23,7 +23,6 @@ As a customer...
   Confirmation email and reminder
   User account option, stores customer details for faster reservations
   Sort restaurants, cuisine, price, location, rating, dress code
-  View current reservations
   Search by anything
 
 As an owner...
