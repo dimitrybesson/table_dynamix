@@ -4,16 +4,17 @@ Today:
 
 
 
-- validations for models (new forms, error msgs, flash notifications)
+- ****validations for models (new forms, error msgs, flash notifications)
+- ********HTML markup, CSS Styling**************
 
--
+Sort, Search, Reviews w/ ratings
 
+Owner edit/delete
 
+Reservations edit/delete
 
 
 -mailer
-
-geocode
 
 
 Completed:
