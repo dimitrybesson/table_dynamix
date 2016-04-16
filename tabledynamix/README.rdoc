@@ -2,6 +2,8 @@ Ideas:
 
 Models to be potentially generated: Categories, Reviews, Address?, Replies?
 
+-have owner's restaurant #show include customer contact with reservation info
+
 -if not logged in and trying to reserve, get kicked to login/signup, but then taken back to where you were without having to do any extra navigating
 
 -mailer
