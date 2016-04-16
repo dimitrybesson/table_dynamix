@@ -1,0 +1,9 @@
+<p>Restaurant Capacity: <%= @restaurant.capacity %></p>
+
+<% @restaurant.reservations.each do |reservation| %>
+  <div>
+    <strong><%= reservation.date %></strong>
+    <%= reservation.time %>
+    <%= reservation.party_size %>
+  </div>
+<% end %>

@@ -7,5 +7,23 @@
   <%= f.label :capacity %>
   <%= f.number_field :capacity %>
 
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :phone %>
+  <%= f.telephone_field :phone %>
+
+  <%= f.label :open_time %>
+  <%= f.time_field :open_time %>
+
+  <%= f.label :close_time %>
+  <%= f.time_field :close_time %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+
+  <%= f.label :menu %>
+  <%= f.text_area :menu %>
+
   <%= f.submit %>
 <% end %>

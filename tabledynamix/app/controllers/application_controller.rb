@@ -12,6 +12,12 @@ class ApplicationController < ActionController::Base
       @current_user ||= Owner.find(session[:owner_id])
     end
   end
-
   helper_method :current_user
+
+  def ensure_logged_in
+    unless current_user
+      #flash
+      redirect_to new_sessions_url
+    end
+  end
 end

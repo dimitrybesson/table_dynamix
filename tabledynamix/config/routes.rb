@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :restaurants, only: [:index, :show, :new, :create]
-  resource :owners, only: [:index, :new, :create]
+  root 'restaurants#index'
+  resources :restaurants, only: [:index, :show, :new, :create] do
+    resources :reservations, only: [:index, :new, :create]
+  end
+  resource :owners, only: [:new, :create, :show]
   resources :customers, only: [:index, :new, :create]
-  resource :sessions, only: [:new, :create, :destroy]
+  resource :sessions, only: [:new, :create]
+
 
   delete '/sessions/' => 'sessions#destroy', as: 'logout'
 

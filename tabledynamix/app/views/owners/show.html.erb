@@ -1,0 +1,12 @@
+<h1>Show Owner</h1>
+
+<h2>
+  <%= current_user.email %>
+</h2>
+<p>
+  <ul>
+    <% current_user.restaurants.each do |restaurant|%>
+      <li><%= restaurant.name %></li>
+    <% end %>
+  </ul>
+</p>

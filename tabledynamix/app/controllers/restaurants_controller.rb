@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :ensure_logged_in, only: %i(new create)
   def index
     @restaurants = Restaurant.all
   end
@@ -13,6 +14,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.owner = current_user
     if @restaurant.save
       redirect_to restaurants_url
     else
@@ -22,7 +24,7 @@ class RestaurantsController < ApplicationController
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :capacity, :owner_id)
+    params.require(:restaurant).permit(:name, :capacity, :owner_id, :description, :phone, :open_time, :close_time, :price, :menu)
   end
 
 end
