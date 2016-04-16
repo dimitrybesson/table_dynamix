@@ -2,6 +2,8 @@ class Restaurant < ActiveRecord::Base
   belongs_to :owner
   has_many :reservations
   has_many :customers, through: :reservations
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   validates :name, :capacity, :phone, :open_time, :close_time, presence: true
   validates :capacity, numericality: {only_integer: true, greater_than: 0}

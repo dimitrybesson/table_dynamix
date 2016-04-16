@@ -16,10 +16,20 @@
   </p>
 
   <p>
-    <%= @restaurant.menu %>
+    <%= @restaurant.address %>
   </p>
 </div>
 
+
+<div class="map">
+  <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=450x300&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}&key=AIzaSyAfpa2cs92HLIB4tU_c09rMiFZ24gv6Me0" %>
+</div>
+
+<div class="menu">
+  <p>
+    <%= @restaurant.menu %>
+  </p>
+</div>
 
 <% if current_user.class == Owner %>
   <%= render 'owner' %>
