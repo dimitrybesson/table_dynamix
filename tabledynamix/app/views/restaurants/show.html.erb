@@ -21,8 +21,13 @@
 </div>
 
 
-<div class="map">
+<!-- <div class="map">
   <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=450x300&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}&key=AIzaSyAfpa2cs92HLIB4tU_c09rMiFZ24gv6Me0" %>
+</div> -->
+
+<div class="embedded">
+  <iframe width=600 height=400 src=  <%= "https://www.google.com/maps/embed/v1/place?q=#{@restaurant.latitude}%2C#{@restaurant.longitude}&zoom=17&key=AIzaSyAfpa2cs92HLIB4tU_c09rMiFZ24gv6Me0" %>>
+  </iframe>
 </div>
 
 <div class="menu">
