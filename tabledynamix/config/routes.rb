@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :customers, only: [:index, :new, :create]
   resource :sessions, only: [:new, :create]
 
-
   delete '/sessions/' => 'sessions#destroy', as: 'logout'
 
   # get 'sessions/new'

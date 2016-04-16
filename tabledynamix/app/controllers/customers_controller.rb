@@ -10,6 +10,7 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
+      session[:customer_id] = @customer.id
       redirect_to restaurants_url
     else
       render :new

@@ -1,4 +1,12 @@
+Today:
+navigation links - 
+
+
+
+
+
 Ideas:
+
 
 Models to be potentially generated: Categories, Reviews, Address?, Replies?
 

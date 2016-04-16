@@ -7,11 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% if current_user.class == Owner %>
+  <p><%= link_to "Home", owners_path %></p>
+<% else %>
+  <p><%= link_to "Home", root_path %></p>
+<% end %>
+
 <p>
   <% if current_user %>
     Currently signed in as <%= current_user.email %><%= link_to "Log Out", logout_path, method: :delete %>
   <% else %>
-    <%= link_to "Log in", new_sessions_path %>
+    <%= link_to "Log in", new_sessions_path %> | <%= link_to "Sign up as Customer", new_customer_path %> | <%= link_to "Sign up as Owner", new_owners_path %>
   <% end %>
 </p>
 <%= yield %>

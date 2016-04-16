@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       if owner && owner.authenticate(params[:password])
         session[:owner_id] = owner.id
         session[:customer_id] = nil
-        redirect_to restaurants_url
+        redirect_to owners_url ###
       else
         render :new
       end
