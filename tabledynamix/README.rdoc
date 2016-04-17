@@ -1,3 +1,27 @@
+Today:
+
+- time helper method for display reservations (customer profile-reservation list, owner's restaurant show page-reservations list)
+
+- walk-in option in restaurant reservation display page (instead of showing contact info for reso)
+
+- ****validations for models (new forms, error msgs, flash notifications)
+- ********HTML markup, CSS Styling**************
+
+Walk-in tracking feature for restaurant
+
+Sort, Search, Reviews w/ ratings
+
+Owner edit/delete
+
+Reservations edit/delete
+
+
+-mailer
+
+
+Completed:
+- reservation validation (restaurant capacity vs bookings)
+
 Ideas:
 
 Models to be potentially generated: Categories, Reviews, Address?, Replies?
