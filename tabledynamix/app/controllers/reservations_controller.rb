@@ -10,6 +10,7 @@ class ReservationsController < ApplicationController
     @reservation = @restaurant.reservations.build(reservation_params)
     @reservation.customer = current_user
     if @reservation.save
+      UserMailer.reservation_confirmation(current_user).deliver_later
       redirect_to root_url
     else
       render :new
@@ -29,6 +30,6 @@ class ReservationsController < ApplicationController
   end
 
   def formatted_time
-    
+
   end
 end
