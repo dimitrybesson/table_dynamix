@@ -7,7 +7,7 @@
 
 <h2>Reservations:</h2>
 
-<% @restaurant.reservations.each do |reservation| %>
+<% @restaurant.reservations.order(:date, :time).each do |reservation| %>
   <div>
     <strong><%= reservation.customer.email %></strong><br>
     <strong><%= reservation.date %></strong>
