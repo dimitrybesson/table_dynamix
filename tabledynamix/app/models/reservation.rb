@@ -5,7 +5,6 @@ class Reservation < ActiveRecord::Base
   validate :during_operating_hours
 
   def can_accomodate_party
-  #binding.pry
     taken_spots = Reservation.all.where(date: date, time: time).sum(:party_size)
 
     if (restaurant.capacity - taken_spots) < party_size
