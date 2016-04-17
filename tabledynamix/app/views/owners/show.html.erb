@@ -7,7 +7,12 @@
 <p>
   <ul>
     <% current_user.restaurants.each do |restaurant|%>
-      <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+      <li><%= link_to restaurant.name, restaurant_path(restaurant) %>
+        <ul>
+          <li><%= link_to "Today's reservations", restaurant_reservations_path(restaurant, when: "today") %>: <%= restaurant.reservations.where(date: Date.today).count %></li>
+          <li><%= link_to "Tomorrow's reservations", restaurant_reservations_path(restaurant, when: "tomorrow") %>: <%= restaurant.reservations.where(date: Date.tomorrow).count %></li>
+        </ul>
+      </li>
     <% end %>
   </ul>
 </p>

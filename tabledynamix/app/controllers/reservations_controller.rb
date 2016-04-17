@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_restaurant, only: %i(new create)
+  before_action :set_restaurant, only: %i(index new create)
   before_action :ensure_logged_in
 
   def new
@@ -17,6 +17,7 @@ class ReservationsController < ApplicationController
   end
 
   def index
+    @reservations = @restaurant.reservations.all
   end
 
   private
@@ -29,6 +30,6 @@ class ReservationsController < ApplicationController
   end
 
   def formatted_time
-    
+
   end
 end
