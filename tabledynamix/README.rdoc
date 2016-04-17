@@ -1,33 +1,8 @@
-Today:
-
-- time helper method for display reservations (customer profile-reservation list, owner's restaurant show page-reservations list)
-
-
-
-- ****validations for models (new forms, error msgs, flash notifications)
-- ********HTML markup, CSS Styling**************
-
-Walk-in tracking feature for restaurant
-
-Sort, Search, Reviews w/ ratings
-
-Owner edit/delete
-
-Reservations edit/delete
-
-
--mailer
-
-
-Completed:
-- reservation validation (restaurant capacity vs bookings)
-
 Ideas:
-
 
 Models to be potentially generated: Categories, Reviews, Address?, Replies?
 
-- reservations look at restaurant capacity
+-have owner's restaurant #show include customer contact with reservation info
 
 -if not logged in and trying to reserve, get kicked to login/signup, but then taken back to where you were without having to do any extra navigating
 

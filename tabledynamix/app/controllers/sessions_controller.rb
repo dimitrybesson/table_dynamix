@@ -8,7 +8,12 @@ class SessionsController < ApplicationController
       if customer && customer.authenticate(params[:password])
         session[:customer_id] = customer.id
         session[:owner_id] = nil
-        redirect_to restaurants_url
+        if session[:target]
+          redirect_to new_restaurant_reservation_url(session[:target])
+        else
+          redirect_to restaurants_url
+        end
+
       else
         render :new
       end

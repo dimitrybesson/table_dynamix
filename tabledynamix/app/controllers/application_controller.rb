@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   def ensure_logged_in
     unless current_user
       #flash
+      session[:target] = params[:restaurant_id]
       redirect_to new_sessions_url
     end
   end
