@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
     @reservation = @restaurant.reservations.build(reservation_params)
     @reservation.customer = current_user
     if @reservation.save
-      UserMailer.reservation_confirmation(current_user).deliver_later
+      UserMailer.reservation_confirmation(current_user, @reservation).deliver_later
       redirect_to root_url
     else
       render :new
