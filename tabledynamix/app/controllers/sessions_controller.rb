@@ -34,6 +34,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:customer_id] = nil
     session[:owner_id] = nil
+    session[:target] = nil
     redirect_to restaurants_url
   end
 end

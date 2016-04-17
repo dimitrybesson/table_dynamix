@@ -1,0 +1,32 @@
+<%= form_for [@restaurant, @reservation] do |f| %>
+  <div class="errors">
+    <% if @reservation.errors.any? %>
+      <%= pluralize(@reservation.errors.count, "error") %>
+      <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time %>
+    <%= f.time_field :time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :party_size %>
+    <%= f.number_field :party_size %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

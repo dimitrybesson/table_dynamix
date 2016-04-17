@@ -5,11 +5,11 @@ class Restaurant < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  validates :name, :capacity, :phone, :open_time, :close_time, presence: true
+  validates :name, :address, :capacity, :phone, :open_time, :close_time, :description, presence: true
+  validates :description, length: {minimum: 20, maximum: 144}
   validates :capacity, numericality: {only_integer: true, greater_than: 0}
   validates :price, numericality: {only_integer: true, greater_than: 0, less_than: 4}
-  ##phone number
 
-  ##description
-  ##menu
+
+
 end

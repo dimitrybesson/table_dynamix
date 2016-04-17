@@ -1,5 +1,11 @@
 <h1><%= @restaurant.name %></h1>
 
+<% if current_user.class == Owner %>
+  <%= render 'owner' %>
+<% else %>
+  <%= render 'customer' %>
+<% end %>
+
 <div class="restaurant-info">
   <p>
     <%= @restaurant.description %>
@@ -36,9 +42,3 @@
     <%= @restaurant.menu %>
   </p>
 </div>
-
-<% if current_user.class == Owner %>
-  <%= render 'owner' %>
-<% else %>
-  <%= render 'customer' %>
-<% end %>
