@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   root 'restaurants#index'
-  resources :restaurants, only: [:index, :show, :new, :create] do
-    resources :reservations, only: [:index, :new, :create]
+  resources :restaurants, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :reservations, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   resource :owners, only: [:new, :create, :show]
-  resources :customers, only: [:index, :new, :create]
+  resources :customers, only: [:index, :new, :create, :show]
   resource :sessions, only: [:new, :create]
 
   delete '/sessions/' => 'sessions#destroy', as: 'logout'

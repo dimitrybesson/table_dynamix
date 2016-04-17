@@ -1,0 +1,11 @@
+<h1><%= @customer.email %></h1>
+
+<% @customer.reservations.each do |reservation| %>
+  <p><%= reservation.restaurant.name %></p>
+  <p><%= reservation.date %></p>
+  <p><%= reservation.time %></p>
+  <p><%= reservation.party_size %></p>
+
+  <%= link_to "Edit", edit_restaurant_reservation_path(reservation.restaurant, reservation) %>
+  <%= link_to "Delete", restaurant_reservation_path(reservation.restaurant, reservation), method: :delete %>
+<% end %>

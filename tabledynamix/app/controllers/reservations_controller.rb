@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_restaurant, only: %i(index new create)
+  before_action :find_restaurant, only: %i(index new create edit update destroy)
   before_action :ensure_logged_in
 
   def new
@@ -21,12 +21,33 @@ class ReservationsController < ApplicationController
     @reservations = @restaurant.reservations.all
   end
 
+  def edit
+    @reservation = @restaurant.reservations.find(params[:id])
+  end
+
+  def update
+    @reservation = @restaurant.reservations.find(params[:id])
+    if @reservation.update_attributes(reservation_params)
+      # Flash
+      redirect_to customer_url(@reservation.customer)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @reservation = @restaurant.reservations.find(params[:id])
+    @reservation.destroy
+    # Flash
+    redirect_to customer_url(@reservation.customer)
+  end
+
   private
   def reservation_params
     params.require(:reservation).permit(:date, :time, :party_size)
   end
 
-  def set_restaurant
+  def find_restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 

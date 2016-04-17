@@ -2,21 +2,25 @@ Today:
 
 - time helper method for display reservations (customer profile-reservation list, owner's restaurant show page-reservations list)
 
-- walk-in option in restaurant reservation display page (instead of showing contact info for reso)
-
 - ****validations for models (new forms, error msgs, flash notifications)
 - ********HTML markup, CSS Styling**************
 
-Walk-in tracking feature for restaurant
-
 Sort, Search, Reviews w/ ratings
+
+Create review function for users on restaurants.
 
 Owner edit/delete
 
-Reservations edit/delete
+Reservations edit/delete (Customer (and maybe Owner))
 
+validations for one user per email
+validate Classes
 
--mailer
+Add walk-in feature for Owner on restaurant show page. Shows "walk-in" on reservation display page instead of showing customer contact info
+
+Update logout to set target to nil.
+
+Update reservation page to show what restaurant you are making a reso at.
 
 
 Completed:
@@ -26,13 +30,11 @@ Ideas:
 
 Models to be potentially generated: Categories, Reviews, Address?, Replies?
 
--have owner's restaurant #show include customer contact with reservation info
+-have owner's restaurant #show include customer contact with reservation info - expand for This Week, This Month
 
 -if not logged in and trying to reserve, get kicked to login/signup, but then taken back to where you were without having to do any extra navigating
 
--mailer
-
--geolocation
+-mailer - cancellation emails
 
 -owner vs customer view customization
 
@@ -41,3 +43,5 @@ Models to be potentially generated: Categories, Reviews, Address?, Replies?
 -better menu input/display?
 
 -figuring out format of reservation time outputs (also useful for hours of operation)
+
+Add functionality to be redirected to a user's page or restaurant page when logging in by choice - add more info to sessions hash.
