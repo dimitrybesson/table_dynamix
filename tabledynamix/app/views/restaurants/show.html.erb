@@ -47,7 +47,7 @@
 
 <% if current_user.class == Owner %>
   <%= render 'owner' %>
-<% else %>
+<% elsif current_user.class == Customer %>
   <%= render 'restaurants/customer' %>
 <% end %>
 
