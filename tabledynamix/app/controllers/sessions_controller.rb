@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
         session[:customer_id] = customer.id
         session[:owner_id] = nil
         if session[:target]
-          redirect_to new_restaurant_reservation_url(session[:target])
+          redirect_to new_restaurant_reservation_url(session[:target]), notice: "Welcome to Table Dynamix"
         else
-          redirect_to restaurants_url
+          redirect_to restaurants_url, notice: "Welcome to Table Dynamix"
         end
 
       else
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       if owner && owner.authenticate(params[:password])
         session[:owner_id] = owner.id
         session[:customer_id] = nil
-        redirect_to owners_url ###
+        redirect_to owners_url, notice: "Welcome to Table Dynamix"
       else
         render :new
       end
@@ -35,6 +35,6 @@ class SessionsController < ApplicationController
     session[:customer_id] = nil
     session[:owner_id] = nil
     session[:target] = nil
-    redirect_to restaurants_url
+    redirect_to restaurants_url, notice: "Hope to see you again soon!"
   end
 end

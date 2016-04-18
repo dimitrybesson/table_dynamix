@@ -7,7 +7,7 @@ class OwnersController < ApplicationController
     @owner = Owner.new(owner_params)
     if @owner.save
       session[:owner_id] = @owner.id
-      redirect_to restaurants_url
+      redirect_to restaurants_url, notice: "Restaurant Owner Registration Completed"
     else
       render :new
     end

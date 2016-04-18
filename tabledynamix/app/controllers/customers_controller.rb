@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.save
       session[:customer_id] = @customer.id
-      redirect_to restaurants_url
+      redirect_to restaurants_url, notice: "Welcome to Table Dynamix!"
     else
       render :new
     end

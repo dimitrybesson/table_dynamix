@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   before_action :ensure_logged_in
 
   def new
-    
+
   end
 
   def create # add party_size validation vs capacity
@@ -13,7 +13,7 @@ class ReservationsController < ApplicationController
     end
     if @reservation.save
       UserMailer.reservation_confirmation(current_user, @reservation).deliver_later
-      redirect_to root_url
+      redirect_to root_url, notice: "Reservation Confirmed!"
     else
       render :new
     end
@@ -30,8 +30,7 @@ class ReservationsController < ApplicationController
   def update
     @reservation = @restaurant.reservations.find(params[:id])
     if @reservation.update_attributes(reservation_params)
-      # Flash
-      redirect_to customer_url(@reservation.customer)
+      redirect_to customer_url(@reservation.customer), notice: "Reservation Updated!"
     else
       render :edit
     end
@@ -40,8 +39,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = @restaurant.reservations.find(params[:id])
     @reservation.destroy
-    # Flash
-    redirect_to customer_url(@reservation.customer)
+    redirect_to customer_url(@reservation.customer), notice: "Reservation cancelled"
   end
 
   private

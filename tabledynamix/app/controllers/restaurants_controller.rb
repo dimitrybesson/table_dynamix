@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.owner = current_user
     if @restaurant.save
-      redirect_to owners_url
+      redirect_to owners_url, notice: "Restaurant Added!"
     else
       render :new
     end
@@ -35,7 +35,7 @@ class RestaurantsController < ApplicationController
   def update
     if @restaurant.update_attributes(restaurant_params)
       # flash
-      redirect_to owners_url
+      redirect_to owners_url, notice: "Updated!"
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class RestaurantsController < ApplicationController
   def destroy
     @restaurant.destroy
     # flash
-    redirect_to owners_url
+    redirect_to owners_url, notice: "Deleted."
   end
 
   private
