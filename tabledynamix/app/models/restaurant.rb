@@ -1,9 +1,11 @@
 class Restaurant < ActiveRecord::Base
+  has_and_belongs_to_many :categories
   belongs_to :owner
   has_many :reservations
   has_many :customers, through: :reservations
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
 
   validates :name, :address, :capacity, :phone, :open_time, :close_time, :description, presence: true
   validates :description, length: {minimum: 20, maximum: 144}
