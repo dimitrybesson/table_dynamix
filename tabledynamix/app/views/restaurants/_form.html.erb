@@ -1,35 +1,59 @@
 <%= form_for @restaurant do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :capacity %>
-  <%= f.number_field :capacity %>
-
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-
-  <%= f.label :phone %>
-  <%= f.telephone_field :phone %>
-
-  <%= f.label :open_time %>
-  <%= f.time_select :open_time, ampm: true, minute_step: 60 %>
-
-  <%= f.label :close_time %>
-  <%= f.time_select :close_time, ampm: true, minute_step: 60 %>
-
-  <%= f.label :price %>
-  <%= f.number_field :price %>
-
-  <%= f.label :menu %>
-  <%= f.text_area :menu %>
-
-  <%= f.label :picture %>
-  <%= f.text_field :picture %>
-  <%= f.label :category_ids, 'Category' %>
-  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-
-  <%= f.submit %>
+  <div class="errors">
+    <% if @restaurant.errors.any? %>
+      <%= pluralize(@restaurant.errors.count, "error") %>
+      <ul>
+        <% @restaurant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :capacity %>
+    <%= f.number_field :capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.telephone_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :open_time %>
+    <%= f.time_select :open_time, ampm: true, minute_step: 60 %>
+  </div>
+  <div class="field">
+    <%= f.label :close_time %>
+    <%= f.time_select :close_time, ampm: true, minute_step: 60 %>
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :menu %>
+    <%= f.text_area :menu %>
+  </div>
+  <div>
+    <%= f.label :picture %>
+    <%= f.text_field :picture %>
+  </div>
+  <div class="category_ids">
+    <%= f.label :category_ids, 'Category' %>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

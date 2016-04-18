@@ -1,12 +1,21 @@
 <%= form_for [@restaurant, @reservation] do |f| %>
 
+  <div class="errors">
+    <% if @reservation.errors.any? %>
+      <%= pluralize(@reservation.errors.count, "error") %>
+      <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
   <div class="field">
-    <%= f.label :date %>
     <%= f.hidden_field :date, value: @reservation.date %>
   </div>
 
   <div class="field">
-    <%= f.label :time %>
     <%= f.hidden_field :time, value: @reservation.time %>
   </div>
 
@@ -14,6 +23,8 @@
     <%= f.label :party_size %>
     <%= f.number_field :party_size %>
   </div>
+
+  <%= f.hidden_field :boss_override, value: true %>
 
   <div class="actions">
     <%= f.submit %>
@@ -30,7 +41,7 @@
 
 <h2>Reservations:</h2>
 
-<% @restaurant.reservations.order(:date, :time).each do |reservation| %>
+<% @restaurant.reservations.where('date >= ?', Time.now).order(:date, :time).each do |reservation| %>
   <div>
     <% if reservation.customer %>
       <strong><%= reservation.customer.email %></strong><br>

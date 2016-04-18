@@ -2,15 +2,29 @@
 
 <%= form_for @owner do |f|  %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email  %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit %>
-
+  <div class="errors">
+    <% if @owner.errors.any? %>
+      <%= pluralize(@owner.errors.count, "error") %>
+      <ul>
+        <% @owner.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email  %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

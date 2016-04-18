@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   before_action :ensure_logged_in
 
   def new
-    
+    @reservation = @restaurant.reservations.build
   end
 
   def create # add party_size validation vs capacity
@@ -20,7 +20,7 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @reservations = @restaurant.reservations.all
+    @reservations = @restaurant.reservations
   end
 
   def edit
