@@ -1,3 +1,10 @@
 <h1><%= @customer.email %></h1>
 
-<h1>Reviews by: <%= @customer.email %> </h1>
+<h2>Reviews by: <%= @customer.email %> </h2>
+  <div class="reviews">
+    <% @customer.reviews.each do |review| %>
+      <p><%= review.restaurant.name %></p>
+      <blockquote><%= review.comment %></blockquote>
+      <blockquote>Rating: <%= review.rating %>/5</blockquote>
+    <% end %>
+  </div>

@@ -45,10 +45,11 @@
 <% end %>
 
 <h2>Reviews</h2>
+<h3>Average rating: <%= @restaurant.reviews.average(:rating).round(1) %></h3>
 <% @restaurant.reviews.each do |review| %>
   <% unless review.new_record? %>
   <div class="review">
-    <p><%= review.customer.email %> says:</p>
+    <p><%= link_to review.customer.email, customer_path(review.customer) %> says:</p>
     <blockquote><%= review.comment %></blockquote>
     <blockquote>Rating: <%= review.rating %>/5</blockquote>
   </div>
