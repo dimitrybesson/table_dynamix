@@ -39,18 +39,18 @@
 
 <p>Restaurant Capacity: <%= @restaurant.capacity %></p>
 
-<h2>Reservations:</h2>
-
-<% @restaurant.reservations.where('date >= ?', Time.now).order(:date, :time).each do |reservation| %>
-  <div>
-    <% if reservation.customer %>
-      <strong><%= reservation.customer.email %></strong><br>
+<% if @restaurant.reservations.any? && @restaurant.reservations.first.persisted? %>
+  <h2>Reservations:</h2>
+  <% @restaurant.reservations.where('date >= ?', Date.today).order(:date, :time).each do |reservation| %>
+    <div>
+      <% if reservation.customer %>
+        <strong><%= reservation.customer.email %></strong><br>
       <% else %>
-      <strong> Walk-in </strong><br>
-    <% end %>
-    <strong><%= reservation.date %></strong>
-    <%= reservation.time.to_formatted_s(:time) %><br>
-    Party Size: <%= reservation.party_size %>
-  </div><br>
-
+        <strong> Walk-in </strong><br>
+      <% end %>
+      <strong><%= reservation.date %></strong>
+      <%= reservation.time.to_formatted_s(:time) %><br>
+      Party Size: <%= reservation.party_size %>
+    </div><br>
+  <% end %>
 <% end %>

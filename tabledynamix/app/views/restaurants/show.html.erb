@@ -51,14 +51,16 @@
   <%= render 'restaurants/customer' %>
 <% end %>
 
-<h2>Reviews</h2>
-<h3>Average rating: <%= @restaurant.reviews.average(:rating).round(1) %></h3>
-<% @restaurant.reviews.each do |review| %>
-  <% unless review.new_record? %>
-  <div class="review">
-    <p><%= link_to review.customer.email, customer_path(review.customer) %> says:</p>
-    <blockquote><%= review.comment %></blockquote>
-    <blockquote>Rating: <%= review.rating %>/5</blockquote>
-  </div>
+<% if @restaurant.reviews.any? && @restaurant.reviews.first.persisted? %>
+  <h2>Reviews</h2>
+  <h3>Average rating: <%= @restaurant.reviews.average(:rating).round(1) %></h3>
+  <% @restaurant.reviews.each do |review| %>
+    <% unless review.new_record? %>
+      <div class="review">
+        <p><%= link_to review.customer.email, customer_path(review.customer) %> says:</p>
+        <blockquote><%= review.comment %></blockquote>
+        <blockquote>Rating: <%= review.rating %>/5</blockquote>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
