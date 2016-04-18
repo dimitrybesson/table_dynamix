@@ -9,22 +9,23 @@ Sort, Search, Reviews w/ ratings
 
 Create review function for users on restaurants.
 
-Owner edit/delete
 
-Reservations edit/delete (Customer (and maybe Owner))
 
-validations for one user per email
-validate Classes
+
 
 Add walk-in feature for Owner on restaurant show page. Shows "walk-in" on reservation display page instead of showing customer contact info
-
-Update logout to set target to nil.
 
 Update reservation page to show what restaurant you are making a reso at.
 
 
 Completed:
 - reservation validation (restaurant capacity vs bookings)
+- Reservations edit/delete (Customer (and maybe Owner))
+- validations for one user per email
+- validate Classes
+- Owner edit/delete
+- Update logout to set target to nil.
+
 
 Ideas:
 
