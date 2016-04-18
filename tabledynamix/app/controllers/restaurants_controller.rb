@@ -7,7 +7,11 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-
+    @reservation = @restaurant.reservations.build
+    if current_user.is_a?(Owner)
+      @reservation.date = Date.today
+      @reservation.time = Time.now.beginning_of_hour
+    end
   end
 
   def new
@@ -45,7 +49,7 @@ class RestaurantsController < ApplicationController
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :capacity, :owner_id, :description, :phone, :open_time, :close_time, :price, :menu, :address, :picture)
+    params.require(:restaurant).permit(:name, :capacity, :owner_id, :description, :phone, :open_time, :close_time, :price, :menu, :address, :picture, category_ids: [])
   end
 
   def find_restaurant

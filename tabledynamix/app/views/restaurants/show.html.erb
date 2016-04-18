@@ -24,6 +24,13 @@
   <p>
     <%= @restaurant.address %>
   </p>
+  <% if @restaurant.categories.any? %>
+    <% @restaurant.categories.each do |category| %>
+      <span class="category-box">
+        <%= category.name %>
+      </span>
+    <% end %>
+  <% end %>
 </div>
 
 
@@ -31,7 +38,7 @@
   <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=450x300&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}&key=AIzaSyAfpa2cs92HLIB4tU_c09rMiFZ24gv6Me0" %>
 </div> -->
 
-<div class="embedded">
+<div id="embedded">
   <iframe width=600 height=400 src=  <%= "https://www.google.com/maps/embed/v1/place?q=#{@restaurant.address.gsub(" ", "+")}&zoom=17&key=AIzaSyAfpa2cs92HLIB4tU_c09rMiFZ24gv6Me0" %>>
   </iframe>
 </div>

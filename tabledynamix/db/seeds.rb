@@ -6,7 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Restaurant.delete_all
-Owner.delete_all
-Customer.delete_all
-Reservation.delete_all
+Category.create(name: 'Fast Food')
+Category.create(name: 'Fine Dining')
+Category.create(name: 'Take out')
+Category.create(name: 'Delivery')
+Category.create(name: 'Late Night')
+Category.create(name: 'Breakfast')
+Category.create(name: 'Lunch')

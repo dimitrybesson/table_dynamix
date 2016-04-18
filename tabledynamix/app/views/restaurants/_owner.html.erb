@@ -1,3 +1,26 @@
+<%= form_for [@restaurant, @reservation] do |f| %>
+
+  <div class="field">
+    <%= f.label :date %>
+    <%= f.hidden_field :date, value: @reservation.date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time %>
+    <%= f.hidden_field :time, value: @reservation.time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :party_size %>
+    <%= f.number_field :party_size %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
 <ul>
   <li> <%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %></li>
   <li> <%= link_to "Remove Restaurant", restaurant_path(@restaurant), method: :delete %></li>
@@ -9,9 +32,14 @@
 
 <% @restaurant.reservations.order(:date, :time).each do |reservation| %>
   <div>
-    <strong><%= reservation.customer.email %></strong><br>
+    <% if reservation.customer %>
+      <strong><%= reservation.customer.email %></strong><br>
+      <% else %>
+      <strong> Walk-in </strong><br>
+    <% end %>
     <strong><%= reservation.date %></strong>
     <%= reservation.time.to_formatted_s(:time) %><br>
     Party Size: <%= reservation.party_size %>
-  </div>
+  </div><br>
+
 <% end %>
