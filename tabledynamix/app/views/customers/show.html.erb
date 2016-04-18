@@ -1,11 +1,3 @@
 <h1><%= @customer.email %></h1>
-<h1>Should everyone be able to see this? Also copied this to customer index. If this is for seeing other peoples' reviews, do we want to protect users' private info?</h1>
-<% @customer.reservations.order(:date, :time).each do |reservation| %>
-  <p><%= reservation.restaurant.name %></p>
-  <p><%= reservation.date %></p>
-  <p><%= reservation.time.to_formatted_s(:time) %></p>
-  <p><%= reservation.party_size %></p>
 
-  <%= link_to "Edit", edit_restaurant_reservation_path(reservation.restaurant, reservation) %>
-  <%= link_to "Delete", restaurant_reservation_path(reservation.restaurant, reservation), method: :delete %>
-<% end %>
+<h1>Reviews by: <%= @customer.email %> </h1>

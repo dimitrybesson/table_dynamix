@@ -15,7 +15,7 @@ class Reservation < ActiveRecord::Base
   end
 
   def during_operating_hours
-    if (time < restaurant.open_time) || (time >= restaurant.close_time)
+    if (time.hour < restaurant.open_time.hour) || (time.hour >= restaurant.close_time.hour)
       errors.add(:not_open, "Sorry, we are not open at that time")
     end
   end
