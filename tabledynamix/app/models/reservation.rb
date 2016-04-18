@@ -6,6 +6,7 @@ class Reservation < ActiveRecord::Base
   validates :date, :time, :party_size, :restaurant_id, presence: true
   validates :party_size, numericality: { only_integer: true, greater_than: 0 }
   validates :party_size, numericality: { only_integer: true, less_than: 21 } unless :boss_override
+  validate :outta_time
 
   def can_accomodate_party
     taken_spots = Reservation.all.where(date: date, time: time).sum(:party_size)
@@ -20,4 +21,11 @@ class Reservation < ActiveRecord::Base
       errors.add(:not_open, "Sorry, we are not open at that time")
     end
   end
+
+  def outta_time
+    if (date < Date.today) || (date == Date.today && time.hour < Time.now.hour)
+      errors.add(:time_travel, "prohibited")
+    end
+  end
+
 end
