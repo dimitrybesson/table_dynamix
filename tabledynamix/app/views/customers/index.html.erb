@@ -1,5 +1,7 @@
 <h1><%= @customer.email %></h1>
 
+<h2>Reservations:</h2>
+
 <% @customer.reservations.order(:date, :time).each do |reservation| %>
   <p><%= reservation.restaurant.name %></p>
   <p><%= reservation.date %></p>
