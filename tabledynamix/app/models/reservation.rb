@@ -3,8 +3,8 @@ class Reservation < ActiveRecord::Base
   belongs_to :customer
   validate :can_accomodate_party
   validate :during_operating_hours
-  validate :date, :time, :party_size, :restaurant_id, presence: true
-  validate :party_size, numericality: {only_integer: true, greater_than: 0, less_than: 21 }
+  validates :date, :time, :party_size, :restaurant_id, presence: true
+  validates :party_size, numericality: {only_integer: true, greater_than: 0, less_than: 21 }
 
   def can_accomodate_party
     taken_spots = Reservation.all.where(date: date, time: time).sum(:party_size)

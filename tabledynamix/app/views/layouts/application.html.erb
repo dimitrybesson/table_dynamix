@@ -15,8 +15,10 @@
 <% end %>
 
 <p>
-  <% if current_user %>
-    Currently signed in as <%= current_user.email %><%= link_to "Log Out", logout_path, method: :delete %>
+  <% if current_user.class == Customer %>
+    Currently signed in as <%= link_to current_user.email, customer_path(current_user) %> | <%= link_to "Log Out", logout_path, method: :delete %>
+  <% elsif current_user.class == Owner %>
+    Currently signed in as <%= current_user.email %> | <%= link_to "Log Out", logout_path, method: :delete %>
   <% else %>
     <%= link_to "Log in", new_sessions_path %> | <%= link_to "Sign up as Customer", new_customer_path %> | <%= link_to "Sign up as Owner", new_owners_path %>
   <% end %>

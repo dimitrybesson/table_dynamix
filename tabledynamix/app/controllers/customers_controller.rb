@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   def index
-
+    @customer = current_user
   end
 
   def new
