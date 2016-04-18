@@ -1,10 +1,5 @@
 <h1><%= @restaurant.name %></h1>
 <%= image_tag @restaurant.picture %>
-<% if current_user.class == Owner %>
-  <%= render 'owner' %>
-<% else %>
-  <%= render 'customer' %>
-<% end %>
 
 <div class="restaurant-info">
   <p>
@@ -42,3 +37,20 @@
     <%= @restaurant.menu %>
   </p>
 </div>
+
+<% if current_user.class == Owner %>
+  <%= render 'owner' %>
+<% else %>
+  <%= render 'restaurants/customer' %>
+<% end %>
+
+<h2>Reviews</h2>
+<% @restaurant.reviews.each do |review| %>
+  <% unless review.new_record? %>
+  <div class="review">
+    <p><%= review.customer.email %> says:</p>
+    <blockquote><%= review.comment %></blockquote>
+    <blockquote>Rating: <%= review.rating %>/5</blockquote>
+  </div>
+  <% end %>
+<% end %>

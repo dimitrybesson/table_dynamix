@@ -2,6 +2,8 @@ class Restaurant < ActiveRecord::Base
   belongs_to :owner
   has_many :reservations
   has_many :customers, through: :reservations
+  has_many :reviews
+  has_many :customers, through: :reviews
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
