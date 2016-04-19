@@ -1,4 +1,9 @@
 <h1><%= @restaurant.name %></h1>
+
+<% if current_user.class == Owner %>
+  <%= render 'owner' %>
+<% end %>
+
 <%= image_tag @restaurant.picture %>
 
 <div class="restaurant-info">
@@ -22,7 +27,7 @@
   <% if @restaurant.categories.any? %>
     <% @restaurant.categories.each do |category| %>
       <span class="category-box">
-        <%= category.name %>
+        <%= link_to category.name, category_path(category) %>
       </span>
     <% end %>
   <% end %>
@@ -45,9 +50,8 @@
   </p>
 </div>
 
-<% if current_user.class == Owner %>
-  <%= render 'owner' %>
-<% elsif current_user.class == Customer %>
+
+<% if current_user.class == Customer %>
   <%= render 'restaurants/customer' %>
 <% end %>
 

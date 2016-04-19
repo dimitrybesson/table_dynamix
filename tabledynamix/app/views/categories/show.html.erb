@@ -1,0 +1,16 @@
+<h1><%= @category.name %></h1>
+
+<div class="">
+  <ul>
+    <% @category.restaurants.each do |restaurant| %>
+    <li> <%= link_to restaurant.name, restaurant_path(restaurant) %>
+      <ul>
+        <li> <strong> <%= restaurant.address %> </strong></li>
+        <li> Hours of Operation: <%= restaurant.open_time.to_formatted_s(:time) %> - <%= restaurant.close_time.to_formatted_s(:time) %></li>
+        <li> Price Range: <%= '$' * restaurant.price %></li>
+      </ul>
+    </li>
+
+  </ul>
+  <% end %>
+</div>

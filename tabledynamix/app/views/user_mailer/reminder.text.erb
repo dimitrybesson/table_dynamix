@@ -1,0 +1,7 @@
+Dear <%= @user.email %>,
+
+You have a reservation at <%= @reservation.restaurant %>, tomorrow (<%= @reservation.date %>) at <%= @reservation.time.to_formatted_s(:time) %>.
+
+See you then!
+
+TableDynamix Team
