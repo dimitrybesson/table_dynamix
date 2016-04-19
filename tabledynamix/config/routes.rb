@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
   delete '/sessions/' => 'sessions#destroy', as: 'logout'
 
+  get '/search' => 'restaurants#search', as: 'search'
+
+  get '/search_results' => 'restaurants#search_results', as: 'search_results'
+
   # get 'reviews/create'
   #
   # get 'reviews/edit'
