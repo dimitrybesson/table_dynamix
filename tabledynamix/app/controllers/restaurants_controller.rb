@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
     elsif params[:search_by]
       @restaurants = Restaurant.where("name like ?", "%#{params[:search_by]}%")
     elsif params[:nearby]
-      @restaurants = Restaurant.near(params[:nearby], 2, units: :km)
+      @restaurants = Restaurant.near(params[:nearby], params[:distance], units: params[:units])
     else
       @restaurants = Restaurant.all
     end

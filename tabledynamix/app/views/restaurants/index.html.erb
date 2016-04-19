@@ -17,6 +17,8 @@
 <div class="nearby">
   <%= form_tag restaurants_path, method: :get do %>
     <%= text_field_tag :nearby %>
+    <%= select_tag(:distance, options_for_select([1, 2, 5, 10, 20, 50])) %>
+    <%= select_tag(:units, options_for_select([:km, :mi])) %>
     <%= submit_tag "Near Me" %>
   <% end %>
 
