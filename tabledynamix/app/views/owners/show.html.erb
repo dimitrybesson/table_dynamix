@@ -11,6 +11,7 @@
         <ul>
           <li><%= link_to "Today's reservations", restaurant_reservations_path(restaurant, when: "today") %>: <%= restaurant.reservations.where(date: Date.today).count %> groups, <%= restaurant.reservations.where(date: Date.today).sum(:party_size) %> diners</li>
           <li><%= link_to "Tomorrow's reservations", restaurant_reservations_path(restaurant, when: "tomorrow") %>: <%= restaurant.reservations.where(date: Date.tomorrow).count %> groups, <%= restaurant.reservations.where(date: Date.tomorrow).sum(:party_size) %> diners</li>
+          <li><%= link_to "Next seven days' reservations", restaurant_reservations_path(restaurant, when: "this_week") %>
           <li> <%= link_to "Edit Restaurant", edit_restaurant_path(restaurant) %></li>
           <li> <%= link_to "Remove Restaurant", restaurant_path(restaurant), method: :delete %></li>
         </ul>
