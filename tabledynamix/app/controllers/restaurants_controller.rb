@@ -3,7 +3,11 @@ class RestaurantsController < ApplicationController
   before_action :ensure_logged_in, only: %i(new create)
 
   def index
-    @restaurants = Restaurant.all
+    if params[:search]
+      @restaurants = Restaurant.where("name like ?", "%#{params[:search]}%")
+    else
+      @restaurants = Restaurant.all
+    end
   end
 
   def show

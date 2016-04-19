@@ -1,5 +1,11 @@
 <h1>All Restaurants</h1>
 
+<%= form_tag restaurants_path, method: :get do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search" %>
+  <%= button_to "Clear Search", root_path, search: nil %>
+<% end %>
+
 <% @restaurants.each do |restaurant| %>
   <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
   <p> <%= link_to "Reserve Now", new_restaurant_reservation_path(restaurant) %></p>
