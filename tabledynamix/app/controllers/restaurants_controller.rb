@@ -3,7 +3,9 @@ class RestaurantsController < ApplicationController
   before_action :ensure_logged_in, only: %i(new create)
 
   def index
-    if params[:search]
+    if params[:sort_by]
+      @restaurants = Category.find_by(name: params[:sort_by]).restaurants ##no category_id column
+    elsif params[:search]
       @restaurants = Restaurant.where("name like ?", "%#{params[:search]}%")
     else
       @restaurants = Restaurant.all
