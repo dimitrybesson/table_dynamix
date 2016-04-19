@@ -1,4 +1,18 @@
 <h1>All Restaurants</h1>
+<div class="search">
+  <%= form_tag restaurants_path, method: :get do %>
+    <%= text_field_tag :search_by %>
+    <%= submit_tag "Search" %>
+    <%= button_to "Clear Search", root_path, search_by: nil %>
+  <% end %>
+</div><br>
+
+<div class="sort">
+<%= form_tag restaurants_path, method: :get do %>
+  <%= select_tag(:sort_by, options_for_select(Category.all.pluck(:name))) %>
+  <%= submit_tag 'Sort by Category' %>
+<% end %>
+</div>
 
 <% @restaurants.each do |restaurant| %>
   <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>

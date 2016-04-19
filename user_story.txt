@@ -15,12 +15,12 @@ As an owner...
 WOULD BE NICE..
 As a customer...
   View current reservations - customer show page
-  Edit reservations
+  ***Edit reservations
   Delete reservations
   See reviews
   Leave a rating
   View a menu, operating hours, contact info, pricing
-  Confirmation email and reminder
+  Confirmation email and reminder**
   User account option, stores customer details for faster reservations
   Sort restaurants, cuisine, price, location, rating, dress code
   Search by anything
