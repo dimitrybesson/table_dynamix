@@ -5,8 +5,10 @@ class RestaurantsController < ApplicationController
   def index
     if params[:sort_by]
       @restaurants = Category.find_by(name: params[:sort_by]).restaurants ##no category_id column
-    elsif params[:search]
-      @restaurants = Restaurant.where("name like ?", "%#{params[:search]}%")
+    elsif params[:search_by]
+      @restaurants = Restaurant.where("name like ?", "%#{params[:search_by]}%")
+    elsif params[:nearby]
+      @restaurants = Restaurant.near(params[:nearby], 2, units: :km)
     else
       @restaurants = Restaurant.all
     end

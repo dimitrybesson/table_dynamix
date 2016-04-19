@@ -12,6 +12,14 @@
   <%= select_tag(:sort_by, options_for_select(Category.all.pluck(:name))) %>
   <%= submit_tag 'Sort by Category' %>
 <% end %>
+</div><br>
+
+<div class="nearby">
+  <%= form_tag restaurants_path, method: :get do %>
+    <%= text_field_tag :nearby %>
+    <%= submit_tag "Near Me" %>
+  <% end %>
+
 </div>
 
 <% @restaurants.each do |restaurant| %>
