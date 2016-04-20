@@ -1,3 +1,10 @@
+*******
+Confirmation and reminder mailer works but is commented out in config/environment/development for ease.
+
+*******
+
+
+
 Today:
 
 - time helper method for display reservations (customer profile-reservation list, owner's restaurant show page-reservations list)
