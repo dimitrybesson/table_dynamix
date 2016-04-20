@@ -2,36 +2,52 @@
 <html>
 <head>
   <title>Tabledynamix</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
+
 <body>
+  <header>
+    <p>
+      <% if current_user.class == Owner %>
+        <p><%= link_to "Home", owners_path %></p>
+      <% else %>
+        <p><%= link_to "Home", root_path %></p>
+      <% end %>
+      <% if current_user %>
+        Currently signed in as
+        <% if current_user.class == Customer %>
+          <%= link_to current_user.email, customers_path %>
+        <% else %>
+          <%= link_to current_user.email, owners_path %>
+        <% end %>
+        | <%= link_to "Log Out", logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "Log in", new_sessions_path %> | <%= link_to "Sign up as Customer", new_customer_path %> | <%= link_to "Sign up as Owner", new_owners_path %>
+      <% end %>
+      <div class="search">
+        <%= form_tag restaurants_path, method: :get do %>
+          <%= text_field_tag :search_by %>
+          <%= submit_tag "Search" %>
+          <%= button_to "Clear Search", root_path, search_by: nil %>
+        <% end %>
+      </div>
+    </div>
+    </p>
+  </header>
   <% if flash[:notice] %>
     <p id="notice">
       <%= flash[:notice] %>
     </p>
   <% end %>
-  <% if current_user.class == Owner %>
-    <p><%= link_to "Home", owners_path %></p>
-  <% else %>
-    <p><%= link_to "Home", root_path %></p>
-  <% end %>
 
-  <p>
-    <% if current_user %>
-      Currently signed in as
-      <% if current_user.class == Customer %>
-        <%= link_to current_user.email, customers_path %>
-      <% else %>
-        <%= link_to current_user.email, owners_path %>
-      <% end %>
-      | <%= link_to "Log Out", logout_path, method: :delete %>
-    <% else %>
-      <%= link_to "Log in", new_sessions_path %> | <%= link_to "Sign up as Customer", new_customer_path %> | <%= link_to "Sign up as Owner", new_owners_path %>
-    <% end %>
-  </p>
+
+
+
 <%= yield %>
+
 
 </body>
 </html>

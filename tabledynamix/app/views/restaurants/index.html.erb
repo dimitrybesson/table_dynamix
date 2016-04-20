@@ -1,11 +1,11 @@
+<div class="background">
+  <%= image_tag "resto.png" %>
+</div>
+<div class="title">
+<h1>Table Dynamix</h1>
+</div>
 <h1>All Restaurants</h1>
-<div class="search">
-  <%= form_tag restaurants_path, method: :get do %>
-    <%= text_field_tag :search_by %>
-    <%= submit_tag "Search" %>
-    <%= button_to "Clear Search", root_path, search_by: nil %>
-  <% end %>
-</div><br>
+<br>
 
 <%= link_to "Advanced Search", search_path %>
 <br>
@@ -27,10 +27,13 @@
 
 </div>
 
+<div class="retaurant_title">
+
 <% @restaurants.each do |restaurant| %>
-  <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+  <h2 id="button_parent"><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
   <% if params[:nearby] %>
-    <h3>Distance: <%= restaurant.distance_to(params[:nearby]).round(2) %> <%= params[:units] %></h3>
+    <h3 id="button">Distance: <%= restaurant.distance_to(params[:nearby]).round(2) %> <%= params[:units] %></h3>
   <% end %>
   <p> <%= link_to "Reserve Now", new_restaurant_reservation_path(restaurant) %></p>
 <% end %>
+</div>

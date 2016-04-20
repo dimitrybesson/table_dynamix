@@ -8,20 +8,24 @@
 
 <div class="restaurant-info">
   <p>
+    <div id="description"> Description </div>
+
     <%= @restaurant.description %>
   </p>
   <p>
+    <div id="restaraunt"> Phone Number </div>
     <%= @restaurant.phone %>
   </p>
   <p>
+    <div id="opening_hours"> Opening Hours </div>
     <%= @restaurant.open_time.to_formatted_s(:time) %> <strong>-</strong> <%= @restaurant.close_time.to_formatted_s(:time) %>
   </p>
-
   <p>
+    <div id="price"> Price </div>
     <%= "$" * @restaurant.price %>
   </p>
-
   <p>
+    <div id="address"> Address </div>
     <%= @restaurant.address %>
   </p>
   <% if @restaurant.categories.any? %>
