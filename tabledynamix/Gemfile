@@ -32,6 +32,7 @@ gem 'geocoder'
 # Necessary for sending out with Action Mailer?
 gem 'mail'
 
+gem 'whenever', :require => false
 # Use Unicorn as the app server
 # gem 'unicorn'
 
