@@ -1,0 +1,31 @@
+<h1>Advanced Search</h1>
+
+<div class="form">
+
+  <%= form_tag search_results_path, method: :get do %>
+    <%= label_tag :category, "Category:" %>
+    <%= select_tag(:category, options_for_select(["", Category.all.pluck(:name)].flatten)) %>
+    <br>
+
+    <%= label_tag :price_range1, "$" %>
+   <%= check_box_tag :price_range1, 1 %>
+   <br>
+   <%= label_tag :price_range2, "$$" %>
+   <%= check_box_tag :price_range2, 2 %>
+   <br>
+   <%= label_tag :price_range3, "$$$" %>
+   <%= check_box_tag :price_range3, 3 %>
+   <br>
+
+   <%= label_tag :nearby, "By Location:" %>
+   <%= text_field_tag :nearby %>
+   <%= select_tag(:distance, options_for_select([1, 2, 5, 10, 20, 50])) %>
+   <%= select_tag(:units, options_for_select([:km, :mi])) %>
+
+   <br>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+
+
+</div>

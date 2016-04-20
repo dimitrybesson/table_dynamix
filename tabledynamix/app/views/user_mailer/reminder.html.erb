@@ -1,7 +1,7 @@
 <h2>Dear <%= @user.email %></h2>
 
 <p>
-  You have a reservation at <%= @reservation.restaurant %>, tomorrow (<%= @reservation.date %>) at <%= @reservation.time.to_formatted_s(:time) %>.
+  You have a reservation at <%= @reservation.restaurant.name %>, tomorrow (<%= @reservation.date %>) at <%= @reservation.time.to_formatted_s(:time) %>.
 </p>
 
 <p>

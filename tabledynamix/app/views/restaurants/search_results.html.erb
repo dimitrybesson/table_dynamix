@@ -1,0 +1,23 @@
+<h1>Search Results</h1>
+
+<div class="">
+  <ul>
+    <% if @restaurants %>
+      <% @restaurants.each do |restaurant| %>
+        <li><%= link_to restaurant.name, restaurant_path(restaurant) %>
+
+          <p><%= restaurant.address %></p>
+          <p>Price Range: <%= '$' * restaurant.price %></p>
+          <ul>
+            <%restaurant.categories.each do |category| %>
+                <li><%= link_to category.name, category_path(category) %></li>
+            <% end %>
+          </ul>
+
+          <p> <%= link_to "Reserve Now", new_restaurant_reservation_path(restaurant) %></p>
+        </li>
+
+      <% end %>
+    <% end %>
+  </ul>
+</div>

@@ -8,6 +8,6 @@ class UserMailer < ApplicationMailer
   def reminder(user, reservation)
     @user = user
     @reservation = reservation
-    mail(to @user.email, subject: "Your reservation at #{@reservation.restaurant}!")
+    mail(to: @user.email, subject: "Your reservation at #{@reservation.restaurant.name}!")
   end
 end

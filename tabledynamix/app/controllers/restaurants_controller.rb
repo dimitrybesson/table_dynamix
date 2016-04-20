@@ -56,6 +56,18 @@ class RestaurantsController < ApplicationController
     redirect_to owners_url, notice: "Deleted."
   end
 
+  def search
+
+
+  end
+
+  def search_results
+    @restaurants = Restaurant.all
+    @restaurants = Category.find_by(name: params[:category]).restaurants unless params[:category].empty?
+    @restaurants = @restaurants.where(price: price_range_collect) unless price_range_collect.empty?
+    @restaurants = @restaurants.near(params[:nearby], params[:distance], units: params[:units]) unless params[:nearby].empty?
+  end
+
   private
   def restaurant_params
     params.require(:restaurant).permit(:name, :capacity, :owner_id, :description, :phone, :open_time, :close_time, :price, :menu, :address, :picture, category_ids: [])
@@ -63,6 +75,20 @@ class RestaurantsController < ApplicationController
 
   def find_restaurant
     @restaurant = Restaurant.find(params[:id])
+  end
+
+  def price_range_collect
+    list = []
+    if params[:price_range1]
+      list << params[:price_range1].to_i
+    end
+    if params[:price_range2]
+      list << params[:price_range2].to_i
+    end
+    if params[:price_range3]
+      list << params[:price_range3].to_i
+    end
+    list
   end
 
 end
