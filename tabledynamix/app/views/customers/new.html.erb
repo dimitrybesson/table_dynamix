@@ -1,29 +1,33 @@
-<h1>Add a new customer</h1>
-<div class="errors">
-  <% if @customer.errors.any? %>
-    <%= pluralize(@customer.errors.count, "error") %>
-    <ul>
-      <% @customer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
+<container class="signup_field" >
+  <div id="signup_box">
+  <h1>Add a new customer</h1>
+  <div class="errors">
+    <% if @customer.errors.any? %>
+      <%= pluralize(@customer.errors.count, "error") %>
+      <ul>
+        <% @customer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 
-<%= form_for @customer do |f|  %>
-  <div class="field">
-    <%= f.label :email  %>
-    <%= f.email_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password  %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation  %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= form_for @customer do |f|  %>
+    <div class="field">
+      <%= f.label :email  %>
+      <%= f.email_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password  %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation  %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+</div>
+</container>
 <% end %>

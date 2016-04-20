@@ -27,6 +27,13 @@
       <% else %>
         <%= link_to "Log in", new_sessions_path %> | <%= link_to "Sign up as Customer", new_customer_path %> | <%= link_to "Sign up as Owner", new_owners_path %>
       <% end %>
+      <div class="search">
+        <%= form_tag restaurants_path, method: :get do %>
+          <%= text_field_tag :search_by %>
+          <%= submit_tag "Search" %>
+          <%= button_to "Clear Search", root_path, search_by: nil %>
+        <% end %>
+      </div>
     </div>
     </p>
   </header>
@@ -35,12 +42,7 @@
       <%= flash[:notice] %>
     </p>
   <% end %>
-<div class="background">
-  <%= image_tag "resto.png" %>
-</div>
-<div class="title">
-<h1>Table Dynamix</h1>
-</div>
+
 
 
 
