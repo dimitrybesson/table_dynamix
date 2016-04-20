@@ -7,6 +7,9 @@
   <% end %>
 </div><br>
 
+<%= link_to "Advanced Search", search_path %>
+<br>
+
 <div class="sort">
 <%= form_tag restaurants_path, method: :get do %>
   <%= select_tag(:sort_by, options_for_select(Category.all.pluck(:name))) %>
@@ -26,5 +29,8 @@
 
 <% @restaurants.each do |restaurant| %>
   <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+  <% if params[:nearby] %>
+    <h3>Distance: <%= restaurant.distance_to(params[:nearby]).round(2) %> <%= params[:units] %></h3>
+  <% end %>
   <p> <%= link_to "Reserve Now", new_restaurant_reservation_path(restaurant) %></p>
 <% end %>
