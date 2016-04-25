@@ -10,19 +10,10 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
-  def update
-
-  end
-
-  def destroy
-
-  end
+  # edit, update, and destroy don't seem to have been used -- so the methods should not exist in the controller.
 
   private
+
   def review_params
     params.require(:review).permit(:rating, :comment)
   end

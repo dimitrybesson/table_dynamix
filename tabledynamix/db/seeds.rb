@@ -6,98 +6,99 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Category.create(name: 'Afghan')
-Category.create(name: 'African')
-Category.create(name: 'Afternoon Tea')
-Category.create(name: 'American')
-Category.create(name: 'Argentinean')
-Category.create(name: 'Asian')
-Category.create(name: 'Australian')
-Category.create(name: 'Bar/Lounge/Bottle Service')
-Category.create(name: 'Barbecue')
-Category.create(name: 'Beer Garden')
-Category.create(name: 'Bistro')
-Category.create(name: 'Brazilian')
-Category.create(name: 'Brazilian Steakhouse')
-Category.create(name: 'Breakfast')
-Category.create(name: 'Brewery')
-Category.create(name: 'British')
-Category.create(name: 'Burgers')
-Category.create(name: 'Café')
-Category.create(name: 'Cajun')
-Category.create(name: 'Californian')
-Category.create(name: 'Canadian')
-Category.create(name: 'Caribbean')
-Category.create(name: 'Chinese')
-Category.create(name: 'Comfort Food')
-Category.create(name: 'Contemporary American')
-Category.create(name: 'Contemporary Asian')
-Category.create(name: 'Contemporary Canadian')
-Category.create(name: 'Contemporary European')
-Category.create(name: 'Contemporary French')
-Category.create(name: 'Contemporary Indian')
-Category.create(name: 'Contemporary Italian')
-Category.create(name: 'Contemporary Mexican')
-Category.create(name: 'Continental')
-Category.create(name: 'Creperie')
-Category.create(name: 'Dessert')
-Category.create(name: 'Dining Bar')
-Category.create(name: 'Eastern European')
-Category.create(name: 'English')
-Category.create(name: 'Eritrean')
-Category.create(name: 'Ethiopian')
-Category.create(name: 'European')
-Category.create(name: 'Filipino')
-Category.create(name: 'Fine cuts')
-Category.create(name: 'French')
-Category.create(name: 'French / Canadian')
-Category.create(name: 'Fusion / Eclectic')
-Category.create(name: 'Gastro Pub')
-Category.create(name: 'German')
-Category.create(name: 'Global, International')
-Category.create(name: 'Greek')
-Category.create(name: 'Halal')
-Category.create(name: 'Hungarian')
-Category.create(name: 'Indian')
-Category.create(name: 'International')
-Category.create(name: 'Irish')
-Category.create(name: 'Israeli')
-Category.create(name: 'Italian')
-Category.create(name: 'Jamaican')
-Category.create(name: 'Japanese')
-Category.create(name: 'Japanese Specialty')
-Category.create(name: 'Korean')
-Category.create(name: 'Latin / Spanish')
-Category.create(name: 'Latin American')
-Category.create(name: 'Mediterranean')
-Category.create(name: 'Mexican')
-Category.create(name: 'Mexican / Southwestern')
-Category.create(name: 'Middle Eastern')
-Category.create(name: 'Modern European')
-Category.create(name: 'Moroccan')
-Category.create(name: 'Northwest')
-Category.create(name: 'Organic')
-Category.create(name: 'Pakistani')
-Category.create(name: 'Pan-Asian')
-Category.create(name: 'Pizzeria')
-Category.create(name: 'Polish')
-Category.create(name: 'Portuguse')
-Category.create(name: 'Prime Rib')
-Category.create(name: 'Provencal')
-Category.create(name: 'Seafood')
-Category.create(name: 'Sicilian')
-Category.create(name: 'Soul food')
-Category.create(name: 'South American')
-Category.create(name: 'Southern')
-Category.create(name: 'Southwest')
-Category.create(name: 'Spanish')
-Category.create(name: 'Steak')
-Category.create(name: 'Steakhouse')
-Category.create(name: 'Sushi')
-Category.create(name: 'Tapas / Small Plates')
-Category.create(name: 'Tex-Mex')
-Category.create(name: 'Thai')
-Category.create(name: 'Traditional Mexican')
-Category.create(name: 'Vegan')
-Category.create(name: 'Vegetarian / Vegan')
-Category.create(name: 'Wine Bar')
+# The following list can be more neatly rewritten as:
+['Afghan',
+'African',
+'Afternoon Tea',
+'American',
+'Argentinean',
+'Asian',
+'Australian',
+'Bar/Lounge/Bottle Service',
+'Barbecue',
+'Beer Garden',
+'Bistro',
+'Brazilian',
+'Brazilian Steakhouse',
+'Breakfast',
+'Brewery',
+'British',
+'Burgers',
+'Café',
+'Cajun',
+'Californian',
+'Canadian',
+'Caribbean',
+'Chinese',
+'Comfort Food',
+'Contemporary American',
+'Contemporary Asian',
+'Contemporary Canadian',
+'Contemporary European',
+'Contemporary French',
+'Contemporary Indian',
+'Contemporary Italian',
+'Contemporary Mexican',
+'Continental',
+'Creperie',
+'Dessert',
+'Dining Bar',
+'Eastern European',
+'English',
+'Eritrean',
+'Ethiopian',
+'European',
+'Filipino',
+'Fine cuts',
+'French',
+'French / Canadian',
+'Fusion / Eclectic',
+'Gastro Pub',
+'German',
+'Global, International',
+'Greek',
+'Halal',
+'Hungarian',
+'Indian',
+'International',
+'Irish',
+'Israeli',
+'Italian',
+'Jamaican',
+'Japanese',
+'Japanese Specialty',
+'Korean',
+'Latin / Spanish',
+'Latin American',
+'Mediterranean',
+'Mexican',
+'Mexican / Southwestern',
+'Middle Eastern',
+'Modern European',
+'Moroccan',
+'Northwest',
+'Organic',
+'Pakistani',
+'Pan-Asian',
+'Pizzeria',
+'Polish',
+'Portuguse',
+'Prime Rib',
+'Provencal',
+'Seafood',
+'Sicilian',
+'Soul food',
+'South American',
+'Southern',
+'Southwest',
+'Spanish',
+'Steak',
+'Steakhouse',
+'Sushi',
+'Tapas / Small Plates',
+'Tex-Mex',
+'Thai',
+'Traditional Mexican',
+'Vegan',
+'Vegetarian / Vegan',
+'Wine Bar'].each { |name| Category.create name: name }

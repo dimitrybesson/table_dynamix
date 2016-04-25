@@ -17,9 +17,10 @@ class CustomersController < ApplicationController
     end
   end
 
-def show
-  @customer = Customer.find(params[:id])
-end
+  # Indentation problem here!
+  def show
+    @customer = Customer.find(params[:id])
+  end
 
   private
 

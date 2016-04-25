@@ -33,9 +33,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'geocoder'
 
 # Necessary for sending out with Action Mailer?
-gem 'mail'
+# No, the mail gem is automatically brought in by Rails, so you don't have to explicitly put it in the Gemfile.
 
-gem 'whenever', :require => false
+# Prefer Ruby 2.x has syntax versus 1.x hash syntax.
+# So the following line should be rewritten as:
+gem 'whenever', require: false
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

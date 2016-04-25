@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :reviews, only: [:create, :edit, :update, :destroy]
   end
+
+  # Nice use of a singular resource on Owner here! Very elegant.
   resource :owners, only: [:new, :create, :show]
   resources :customers, only: [:index, :new, :create, :show]
   resource :sessions, only: [:new, :create]
@@ -13,8 +15,12 @@ Rails.application.routes.draw do
 
   delete '/sessions/' => 'sessions#destroy', as: 'logout'
 
-  get '/search' => 'restaurants#search', as: 'search'
+  # Instead of tacking on non-RESTful methods to the RestaurantsController,
 
+  # you should create a SearchesController with a new method and app/views/searches/new.html.erb (to show the search form)
+  # and a create method and app/views/searches/create.html.erb (to execute the search and present the results).
+
+  get '/search' => 'restaurants#search', as: 'search'
   get '/search_results' => 'restaurants#search_results', as: 'search_results'
 
   # get 'reviews/create'
