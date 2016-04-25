@@ -9,7 +9,8 @@ class Reservation < ActiveRecord::Base
   validate :outta_time
 
   def can_accomodate_party
-    taken_spots = Reservation.all.where(date: date, time: time).sum(:party_size)
+    # Do not need to add .all when doing .where on a model
+    taken_spots = Reservation.where(date: date, time: time).sum(:party_size)
 
     if (restaurant.capacity - taken_spots) < party_size
       errors.add(:over_capacity, "Sorry, not enough seats")

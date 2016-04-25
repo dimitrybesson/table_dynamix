@@ -8,9 +8,11 @@ class ReservationsController < ApplicationController
 
   def create # add party_size validation vs capacity
     @reservation = @restaurant.reservations.build(reservation_params)
-    if current_user.is_a?(Customer)
-      @reservation.customer = current_user
-    end
+
+    @reservation.customer = current_user if current_user.is_a?(Customer)
+
+    # What happens if current_user is an Owner? I don't quite understand what would happen here
+
     if @reservation.save
       UserMailer.reservation_confirmation(current_user, @reservation).deliver_now
       redirect_to root_url, notice: "Reservation Confirmed!"
@@ -38,11 +40,21 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation = @restaurant.reservations.find(params[:id])
-    @reservation.destroy
-    redirect_to customer_url(@reservation.customer), notice: "Reservation cancelled"
+
+    # It's good practice to check the status of destroy.
+    # Perhaps you might have a validation that disallows a reservation within an hour of the reserved time, for example...
+    # http://stackoverflow.com/a/12646791
+    if @reservation.destroy && @reservation.destroyed?
+      flash[:notice] = 'Reservation cancelled'
+    else
+      flash[:error] = 'Could not cancel reservation'
+    end
+
+    redirect_to customer_url(@reservation.customer)
   end
 
   private
+
   def reservation_params
     params.require(:reservation).permit(:date, :time, :party_size)
   end
@@ -52,6 +64,6 @@ class ReservationsController < ApplicationController
   end
 
   def formatted_time
-
   end
+
 end

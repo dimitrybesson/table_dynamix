@@ -1,12 +1,12 @@
 <h1>Show Owner</h1>
 
 <h2>
-  <%= current_user.email %>
+  <%= @owner.email %>
 </h2>
 
 <p>
   <ul>
-    <% current_user.restaurants.each do |restaurant|%>
+    <% @owner.restaurants.each do |restaurant|%>
       <li><%= link_to restaurant.name, restaurant_path(restaurant) %>
         <ul>
           <li><%= link_to "Today's reservations", restaurant_reservations_path(restaurant, when: "today") %>: <%= restaurant.reservations.where(date: Date.today).count %> groups, <%= restaurant.reservations.where(date: Date.today).sum(:party_size) %> diners</li>

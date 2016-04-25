@@ -3,14 +3,15 @@ class RestaurantsController < ApplicationController
   before_action :ensure_logged_in, only: %i(new create)
 
   def index
-    if params[:sort_by]
-      @restaurants = Category.find_by(name: params[:sort_by]).restaurants ##no category_id column
+    # Here's a DRYer way of assigning the results of if/else to a variable
+    @restaurants = if params[:sort_by]
+      Category.find_by(name: params[:sort_by]).restaurants ##no category_id column
     elsif params[:search_by]
-      @restaurants = Restaurant.where("name like ?", "%#{params[:search_by]}%")
+      Restaurant.where("name like ?", "%#{params[:search_by]}%")
     elsif params[:nearby]
-      @restaurants = Restaurant.near(params[:nearby], params[:distance], units: params[:units])
+      Restaurant.near(params[:nearby], params[:distance], units: params[:units])
     else
-      @restaurants = Restaurant.all
+      Restaurant.all
     end
   end
 
@@ -38,7 +39,6 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -51,14 +51,20 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
-    @restaurant.destroy
-    # flash
-    redirect_to owners_url, notice: "Deleted."
+    # It's good practice to check the status of destroy.
+    # Perhaps you might have a validation that disallows destroying a restaurant when it still has pending reservations, for example...
+    # http://stackoverflow.com/a/12646791
+    if @restaurant.destroy && @restaurant.destroyed?
+      flash[:notice] = 'Deleted.'
+    else
+      flash[:error] = 'Could not delete restaurant.'
+    end
+    redirect_to owners_url
   end
 
+  # As mentioned in routes.rb, the search and search_results methods should be rewritten into a SearchesController.
+  # These methods are not RESTful.
   def search
-
-
   end
 
   def search_results
@@ -69,6 +75,7 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
   def restaurant_params
     params.require(:restaurant).permit(:name, :capacity, :owner_id, :description, :phone, :open_time, :close_time, :price, :menu, :address, :picture, category_ids: [])
   end
@@ -78,17 +85,12 @@ class RestaurantsController < ApplicationController
   end
 
   def price_range_collect
-    list = []
-    if params[:price_range1]
-      list << params[:price_range1].to_i
-    end
-    if params[:price_range2]
-      list << params[:price_range2].to_i
-    end
-    if params[:price_range3]
-      list << params[:price_range3].to_i
-    end
-    list
+    # compact removes any nils
+    [
+      params[:price_range1].try(:to_i),
+      params[:price_range2].try(:to_i),
+      params[:price_range3].try(:to_i)
+    ].compact
   end
 
 end

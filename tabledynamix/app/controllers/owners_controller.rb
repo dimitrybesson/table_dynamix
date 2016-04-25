@@ -14,9 +14,11 @@ class OwnersController < ApplicationController
   end
 
   def show
-
+    # Here, you should set owner into an instance variable and use that in the view.
+    # It's just more "proper" than straight up using current_user, because Rails coders expect to find
+    # an instance variable named @owner in the app/views/owners/show.html.erb view.
+    @owner = current_user
   end
-
 
   private
 
